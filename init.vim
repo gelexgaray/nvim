@@ -1,9 +1,10 @@
 " Carga de plugins por medio de vim-pathogen
-runtime bundle/pathogen/autoload/pathogen.vim
+runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
-" Cambiar el tema de color
+" Cambiar el tema de color, sobreescribiendo algunos colores
 colorscheme zellner
+autocmd ColorScheme * highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
 " Opciones de representación de texto
 set encoding=utf-8
@@ -31,14 +32,19 @@ vnoremap <C-Up> gk
 inoremap <C-Down> <C-O>gj
 inoremap <C-Up> <C-o>gk
 
-" Números de línea
-"set number
+" Posición dentro del documento
+set ruler
+let &colorcolumn=join(range(73,80),",")
 
-" Cuando se ejecuta por ssh, no interceptar ratón
-"if exists("$SSH_CONNECTION")
-"	set mouse=
-"else
-"	set mouse=a
-"endif
+" Ratón
 set mouse=a
 
+" Pencil 
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init({'wrap': 'soft'})
+  autocmd FileType text         call pencil#init()
+augroup END
+set statusline=%<%f\ %h%m%r%w\ \ %{PencilMode()}\ %=\ col\ %c%V\ \ line\ %l\,%L\ %P
+set rulerformat=%-12.(%l,%c%V%)%{PencilMode()}\ %P
+let g:pencil#mode_indicators = {'hard': 'H', 'auto': 'A', 'soft': 'S', 'off': '',}
