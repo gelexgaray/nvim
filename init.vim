@@ -4,7 +4,9 @@ execute pathogen#infect()
 
 " Cambiar el tema de color, sobreescribiendo algunos colores
 colorscheme zellner
+" Tabla en http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html
 autocmd ColorScheme * highlight ColorColumn ctermbg=235 guibg=#2c2d27
+autocmd ColorScheme * highlight SpellBad cterm=underline,bold ctermfg=9 ctermbg=0
 
 " Opciones de representación de texto
 set encoding=utf-8
