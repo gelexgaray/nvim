@@ -50,3 +50,11 @@ augroup END
 set statusline=%<%f\ %h%m%r%w\ \ %{PencilMode()}\ %=\ col\ %c%V\ \ line\ %l\,%L\ %P
 set rulerformat=%-12.(%l,%c%V%)%{PencilMode()}\ %P
 let g:pencil#mode_indicators = {'hard': 'H', 'auto': 'A', 'soft': 'S', 'off': '',}
+
+" AutoComplPop
+let g:acp_autoselectFirstCompletion = 1
+augroup AutoComplPop
+  autocmd!
+  autocmd FileType markdown,mkd AcpLock
+  autocmd FileType text         AcpLock
+augroup END
