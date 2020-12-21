@@ -1,9 +1,11 @@
+set encoding=utf-8
+
 " Carga de plugins por medio de vim-pathogen
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
 " Cambiar el tema de color, sobreescribiendo algunos colores
-colorscheme zellner
+colorscheme monokai
 " Tabla en http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html
 autocmd ColorScheme * highlight ColorColumn ctermbg=235 guibg=#2c2d27
 autocmd ColorScheme * highlight SpellBad cterm=underline,bold ctermfg=9 ctermbg=0
@@ -58,3 +60,27 @@ augroup AutoComplPop
   autocmd FileType markdown,mkd AcpLock
   autocmd FileType text         AcpLock
 augroup END
+
+" Airline extra
+set t_Co=256
+set noshowmode
+set laststatus=2
+let g:airline#extensions#default#section_truncate_width = {
+    \ 'warning': 80,
+    \ 'error': 80,
+    \ 'x': 80,
+    \ 'y': 80}
+let g:airline_powerline_fonts = 1
+let g:airline_mode_map = {
+    \ 'c': 'C',
+    \ 'n': 'N',
+    \ 'V': 'V',
+    \ 'i':'I'}
+let g:airline_section_z = '%2l/%L☰%2v'
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#wordcount#enabled = 0
+let g:airline_skip_empty_sections = 1
+
+" Other
+set number
