@@ -81,5 +81,10 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#wordcount#enabled = 0
 let g:airline_skip_empty_sections = 1
 
+" Use Widows keybindings
+source $VIMRUNTIME/mswin.vim
+behave mswin
+
 " Other
 set number
+
